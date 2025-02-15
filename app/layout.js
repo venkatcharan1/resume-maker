@@ -22,15 +22,29 @@ export const metadata = {
     },
 };
 
+
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
+            <head>
+                {/* Google Tag Manager Script */}
+                <Script async src="https://www.googletagmanager.com/gtag/js?id=G-H7EC3KF6MS" />
+                <Script id="google-analytics">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-H7EC3KF6MS');
+                    `}
+                </Script>
+            </head>
             <body>
                 <ReduxProvider>
                     <Header />
-                    <div className="mx-auto  min-h-[calc(100vh-3rem)]">{children}</div>
+                    <div className="mx-auto min-h-[calc(100vh-3rem)]">{children}</div>
                 </ReduxProvider>
-                <GoogleAnalytics gaId='G-WPXWXJ9MC2' />
+                <GoogleAnalytics gaId="G-WPXWXJ9MC2" />
+                <Analytics />
             </body>
         </html>
     );
